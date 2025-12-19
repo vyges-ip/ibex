@@ -1,0 +1,28 @@
+{
+  "name": "vyges-ip/ibex",
+  "x-version": "pulpissimo-v1.0.1",
+  "version": "pulpissimo-v1.0.1",
+  "description": "[Ibex OpenTitan configuration Nightly Regression](https://ibex.reports.lowrisc.org/opentitan/latest/report.html)",
+  "license": "Apache-2.0",
+  "template": "vyges-ip-template@1.0.0",
+  "target": [
+    "asic",
+    "fpga"
+  ],
+  "design_type": [
+    "digital"
+  ],
+  "maturity": "draft",
+  "upstream": {
+    "repo": "https://github.com/lowRISC/ibex",
+    "commit": "246849ed1063828355cae8a22c6f1aa95250c3b6"
+  },
+  "interfaces": [],
+  "parameters": [],
+  "constraints": {
+    "clock": [],
+    "power": [],
+    "area": {}
+  },
+  "_note": "This is an auto-generated skeleton. Please fill in interfaces, parameters, and constraints based on RTL analysis."
+}

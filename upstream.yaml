@@ -1,0 +1,26 @@
+schema_version: "vyges-upstream-v1"
+
+upstream:
+  repo: https://github.com/lowRISC/ibex
+  branch: master
+  commit: 246849ed1063828355cae8a22c6f1aa95250c3b6
+
+import:
+  rtl:
+    - path: "rtl"
+      map_to: "rtl"
+  patches:
+    - path: "vendor/patches"
+      map_to: "vendor/patches"
+  license:
+    - path: "LICENSE"
+  readme:
+    - path: "README.md"
+
+exclude:
+  # All other directories excluded by default
+  # Add more as needed
+
+license:
+  spdx: Apache-2.0
+  file: LICENSE

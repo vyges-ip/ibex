@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     
     steps:
       - name: Checkout repository
@@ -331,43 +330,13 @@ jobs:
               git push origin "$BRANCH_NAME"
               echo "✅ Generated and committed vyges-metadata.json"
             else
-              # Update sync - create PR
-              BRANCH_NAME="upstream-sync-${{ steps.check.outputs.latest }}"
-              git checkout -b "$BRANCH_NAME"
+              # Update sync - commit directly to main/master
+              BRANCH_NAME=$(git branch --show-current || echo "main")
               git add .
-              git commit -m "Sync upstream from commit ${{ steps.check.outputs.latest }}"
+              COMMIT_MSG=$(printf "Sync upstream from commit %s\n\n- Synced files according to upstream.yaml import section\n- Updated upstream.yaml commit hash from %s to %s\n- Updated vyges-metadata.json with latest upstream info" "${{ steps.check.outputs.latest }}" "${{ steps.check.outputs.current }}" "${{ steps.check.outputs.latest }}")
+              git commit -m "$COMMIT_MSG"
               git push origin "$BRANCH_NAME"
-              
-              # Create PR
-              gh pr create \
-                --title "Upstream Sync: ${{ steps.check.outputs.latest }}" \
-                --body "## Upstream Sync
-            
-            **Upstream commit**: \`${{ steps.check.outputs.latest }}\` (was \`${{ steps.check.outputs.current }}\`)
-            
-            ### Changes
-            - Synced files according to upstream.yaml import section
-            - Updated upstream.yaml commit hash
-            - Updated vyges-metadata.json with latest upstream info
-            
-            ### Next Steps
-            - Review changes
-            - Merge when ready" \
-                --base main || gh pr create \
-                --title "Upstream Sync: ${{ steps.check.outputs.latest }}" \
-                --body "## Upstream Sync
-            
-            **Upstream commit**: \`${{ steps.check.outputs.latest }}\` (was \`${{ steps.check.outputs.current }}\`)
-            
-            ### Changes
-            - Synced files according to upstream.yaml import section
-            - Updated upstream.yaml commit hash
-            - Updated vyges-metadata.json with latest upstream info
-            
-            ### Next Steps
-            - Review changes
-            - Merge when ready" \
-                --base master
+              echo "✅ Upstream sync completed and pushed to $BRANCH_NAME"
             fi
           else
             echo "No changes to commit"

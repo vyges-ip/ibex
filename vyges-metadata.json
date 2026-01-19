@@ -15,7 +15,7 @@
   "maturity": "draft",
   "upstream": {
     "repo": "https://github.com/lowRISC/ibex",
-    "commit": "0c233f54361d769f370889223acc456f2ac19d46"
+    "commit": "05ef0e67eb5eb767a5091e6ff9c5e69afba28a9d"
   },
   "interfaces": [],
   "parameters": [],

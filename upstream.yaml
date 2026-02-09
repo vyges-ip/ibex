@@ -3,7 +3,7 @@ upstream:
   type: "standalone"
   repo: https://github.com/lowRISC/ibex
   branch: master
-  commit: 7d2d60cd259c3ba4dc10c80125af18c05ae72ba2
+  commit: 19592a1fc7ba7e85427906cd4d86b8356b91a45d
 import:
   rtl:
     - path: "rtl"

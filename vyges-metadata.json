@@ -12,7 +12,7 @@
   "design_type": [
     "digital"
   ],
-  "maturity": "draft",
+  "maturity": "prototype",
   "upstream": {
     "repo": "https://github.com/lowRISC/ibex",
     "commit": "8d171a16d013fd31f5486b5af0a83c935687d9cc"
@@ -24,5 +24,6 @@
     "power": [],
     "area": {}
   },
-  "_note": "This is an auto-generated skeleton. Please fill in interfaces, parameters, and constraints based on RTL analysis."
+  "_note": "This is an auto-generated skeleton. Please fill in interfaces, parameters, and constraints based on RTL analysis.",
+  "updated": "2026-03-24T02:12:03Z"
 }

@@ -219,7 +219,7 @@
         "name": "upstream",
         "path": "tb/",
         "framework": "upstream",
-        "description": "Upstream project's testbench harness \u2014 see source repo."
+        "description": "Upstream project's testbench harness — see source repo."
       }
     ],
     "coverage": "functional"
@@ -336,5 +336,9 @@
     "width_clean": false,
     "no_sv_keyword_conflicts": true
   },
-  "defines": []
+  "defines": [],
+  "upstream": {
+    "repo": "https://github.com/lowRISC/ibex",
+    "commit": "fc34556837c4c2e4665f6932296fb3b54cc9e857"
+  }
 }

@@ -30,10 +30,85 @@
   ],
   "interfaces": [
     {
+      "type": "clock",
+      "name": "clock",
+      "signals": [
+        {
+          "name": "clk_i",
+          "direction": "input",
+          "type": "clock",
+          "width": 1
+        }
+      ]
+    },
+    {
+      "type": "reset",
+      "name": "reset",
+      "signals": [
+        {
+          "name": "rst_ni",
+          "direction": "input",
+          "type": "reset",
+          "width": 1,
+          "active_level": "low"
+        }
+      ]
+    },
+    {
       "type": "bus",
       "direction": "master",
       "protocol": "OBI-like",
-      "description": "Instruction fetch (instr_req_o/instr_gnt_i/instr_rvalid_i/instr_rdata_i) and data access (data_req_o/data_gnt_i/data_rvalid_i/data_rdata_i) ports. Adapted to TL-UL via tlul_adapter_host in SoC integration."
+      "description": "Instruction fetch (instr_req_o/instr_gnt_i/instr_rvalid_i/instr_rdata_i) and data access (data_req_o/data_gnt_i/data_rvalid_i/data_rdata_i) ports. Adapted to TL-UL via tlul_adapter_host in SoC integration.",
+      "signals": [
+        {
+          "name": "req_o",
+          "direction": "output",
+          "type": "control",
+          "width": 1
+        },
+        {
+          "name": "gnt_i",
+          "direction": "input",
+          "type": "control",
+          "width": 1
+        },
+        {
+          "name": "addr_o",
+          "direction": "output",
+          "type": "address",
+          "width": 32
+        },
+        {
+          "name": "we_o",
+          "direction": "output",
+          "type": "control",
+          "width": 1
+        },
+        {
+          "name": "be_o",
+          "direction": "output",
+          "type": "control",
+          "width": 4
+        },
+        {
+          "name": "wdata_o",
+          "direction": "output",
+          "type": "data",
+          "width": 32
+        },
+        {
+          "name": "rvalid_i",
+          "direction": "input",
+          "type": "control",
+          "width": 1
+        },
+        {
+          "name": "rdata_i",
+          "direction": "input",
+          "type": "data",
+          "width": 32
+        }
+      ]
     },
     {
       "type": "interrupt",
@@ -138,7 +213,16 @@
     "simulators": [
       "verilator"
     ],
-    "notes": "Verified in edge-sensor-soc (Verilator + Vivado FPGA). Upstream has full UVM DV + RISC-V compliance tests."
+    "notes": "Verified in edge-sensor-soc (Verilator + Vivado FPGA). Upstream has full UVM DV + RISC-V compliance tests.",
+    "testbenches": [
+      {
+        "name": "upstream",
+        "path": "tb/",
+        "framework": "upstream",
+        "description": "Upstream project's testbench harness \u2014 see source repo."
+      }
+    ],
+    "coverage": "functional"
   },
   "documentation": {
     "upstream": "https://ibex-core.readthedocs.io/"

@@ -22,3 +22,13 @@ license:
   spdx: Apache-2.0
   file: LICENSE
 metadata_locked: true
+# Vyges-authored overlay content — excluded from upstream sync. See
+# vyges-metadata.json vyges_overlays[] for the list of overridden paths.
+vyges_authored:
+  exclude_from_sync:
+    - "vyges-overlays/"
+# Sync policy: upstream pulls proceed normally; any upstream change to a
+# path listed in vyges_overlays[].replaces is flagged for human review —
+# upstream may have fixed the original issue, making the overlay obsolete.
+sync_policy:
+  overlay_conflict: "flag-for-review"

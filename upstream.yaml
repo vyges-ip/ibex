@@ -15,9 +15,10 @@ import:
     - path: "LICENSE"
   readme:
     - path: "README.md"
-exclude:
-# All other directories excluded by default
-# Add more as needed
+# All other directories excluded by default. Add more as needed.
+# NOTE: this must stay a list. A bare `exclude:` parses as null, not as an empty
+# list, and that is what made this manifest fail schema validation.
+exclude: []
 license:
   spdx: Apache-2.0
   file: LICENSE
